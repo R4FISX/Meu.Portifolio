@@ -1,1 +1,1 @@
-"# Meu.Portifolio" 
+Esse é o meu site, aonde eu posso falar mais sobre as minhas stacks e minhas conquista no mundo da programação em 2 anos
