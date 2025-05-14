@@ -1,732 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael | Desenvolvedor</title>
-    <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #ffffff;
-            --accent-color: #4fc3f7;
-            --secondary-bg: #111111;
-            --hover-color: #81d4fa;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        header {
-            padding: 2rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background-color: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-        
-        .logo span {
-            color: var(--text-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(79, 195, 247, 0.1), transparent 50%);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-        
-        .hero-subtitle {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero-desc {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent-color);
-            color: #0a0a0a;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: var(--hover-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
-        }
-        
-        section {
-            padding: 6rem 0;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-content p {
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .skills {
-            background-color: var(--secondary-bg);
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .skill-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-        
-        .skill-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .skill-desc {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .projects {
-            position: relative;
-        }
-        
-        .projects::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at bottom left, rgba(79, 195, 247, 0.1), transparent 50%);
-            z-index: -1;
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-img::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(79, 195, 247, 0.2), transparent);
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-desc {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1rem;
-        }
-        
-        .contact {
-            background-color: var(--secondary-bg);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        
-        .contact-info p {
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            background-color: var(--accent-color);
-            color: #0a0a0a;
-            transform: translateY(-5px);
-        }
-        
-        footer {
-            background-color: var(--bg-color);
-            padding: 2rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        footer p {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .animate-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-        
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Floating elements animation */
-        .floating {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(79, 195, 247, 0.15), transparent);
-            z-index: -1;
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        .floating:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-        }
-        
-        .floating:nth-child(2) {
-            top: 60%;
-            left: 80%;
-            width: 200px;
-            height: 200px;
-            animation-delay: -5s;
-        }
-        
-        .floating:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            width: 100px;
-            height: 100px;
-            animation-delay: -10s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            25% {
-                transform: translate(30px, 30px);
-            }
-            50% {
-                transform: translate(0, 50px);
-            }
-            75% {
-                transform: translate(-30px, 10px);
-            }
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: rgba(255, 255, 255, 0.1);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            padding: 1rem 0;
-            position: relative;
-        }
-        
-        .timeline-content {
-            position: relative;
-            width: calc(50% - 40px);
-            padding: 1.5rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-content:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            left: 50%;
-            margin-left: 80px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            right: -48px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--accent-color);
-            border-radius: 50%;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            left: -48px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--accent-color);
-            border-radius: 50%;
-        }
-        
-        .timeline-date {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-desc {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .timeline::before {
-                left: 40px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                left: 0;
-                margin-left: 80px;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content::after,
-            .timeline-item:nth-child(even) .timeline-content::after {
-                left: -48px;
-                right: auto;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafael | Dev</title>
+  <!-- Fonte monoespaçada para vibe de terminal -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --fg: #cfd8dc;
+      --accent: #39ff14;
+      --secondary: #1b1e23;
+      --hover: #2e333e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Fira Code', monospace;
+      line-height: 1.6;
+      cursor: crosshair;
+    }
+    a { color: var(--fg); text-decoration: none; }
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      backdrop-filter: blur(6px);
+      background: rgba(13,15,20,0.75);
+      border-bottom: 1px solid var(--secondary);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    .logo { color: var(--accent); font-weight: 600; font-size: 1.4rem; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { position: relative; padding: 0.3rem 0; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    section { padding: 6rem 0; }
+    .hero {
+      height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, rgba(57,255,20,0.1), transparent 70%);
+      overflow: hidden;
+    }
+    .hero-content { max-width: 700px; }
+    .hero-sub { color: var(--accent); letter-spacing: 3px; }
+    .hero-title { font-size: 3rem; margin: 0.5rem 0; position: relative; }
+    .hero-title::after { content: '|'; color: var(--accent); animation: blink 0.8s steps(1) infinite; margin-left:5px; }
+    @keyframes blink { 0%,100%{opacity:0;}50%{opacity:1;} }
+    .hero-desc { opacity:.85; max-width:600px; margin-bottom:2rem; }
+    .btn { background: var(--accent); color: var(--bg); padding:0.8rem 1.5rem; border:none; font-weight:600; border-radius:4px; margin:0.5rem 0; transition:background .3s, transform .3s; cursor:pointer; display:inline-block; }
+    .btn:hover { background: var(--hover); transform: translateY(-2px); }
+    .section-title { font-size:1.8rem; position:relative; display:inline-block; margin-bottom:2rem; }
+    .section-title::after { content:''; position:absolute; bottom:-6px; left:0; width:50px; height:3px; background:var(--accent); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+    .about-grid p { margin-bottom:1rem; opacity:.85; }
+    .skills-grid { display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:2rem; }
+    .skill-card {
+      background:var(--secondary); padding:1rem 1.5rem; border-radius:6px; border:1px solid var(--bg);
+      transition:transform .3s;
+    }
+    .skill-card:hover { transform: translateY(-3px); border-color:var(--accent); }
+    .skill-icon { font-size:2rem; color:var(--accent); margin-bottom:.5rem; }
+    .skill-title { font-size:1.1rem; margin-bottom:.3rem; }
+    .skill-desc { font-size:.9rem; opacity:.8; }
+    .project-buttons { display:flex; flex-wrap:wrap; gap:1rem; }
+    .contact-grid { display:flex; justify-content:center; gap:2rem; }
+    .contact-link { display:flex; align-items:center; justify-content:center; width:50px; height:50px; border:2px solid var(--accent); border-radius:50%; transition:border-color .3s, color .3s; font-size:1.4rem; }
+    .contact-link:hover { border-color:var(--hover); color:var(--hover); }
+    @media(max-width:768px) {
+      nav { flex-direction:column; gap:.5rem; padding:.5rem 0; }
+      .about-grid { grid-template-columns:1fr; }
+      .skills-grid, .project-buttons, .contact-grid { justify-content:center; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Elementos flutuantes para o efeito futurista -->
-    <div class="floating"></div>
-    <div class="floating"></div>
-    <div class="floating"></div>
-    
-    <!-- Header / Navegação -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Rafael<span>.</span>Dev</div>
-                <div class="nav-links">
-                    <a href="#sobre">Sobre</a>
-                    <a href="#habilidades">Habilidades</a>
-                    <a href="#projetos">Projetos</a>
-                    <a href="#contato">Contato</a>
-                </div>
-            </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Rafael<span>.</span>Dev</div>
+        <div class="nav-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#habilidades">Skills</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
         </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-subtitle">DESENVOLVEDOR</div>
-                <h1 class="hero-title">Rafael, 20 anos.<br>Programador & Empreendedor</h1>
-                <p class="hero-desc">Desenvolvedor Java e JavaScript com 2 anos de experiência, apaixonado por criar soluções inovadoras e dono de duas startups.</p>
-                <a href="#contato" class="btn">Vamos conversar</a>
-            </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-sub">DEV & EMPREENDEDOR</div>
+      <h1 class="hero-title">Rafael, 20 anos</h1>
+      <p class="hero-desc">Apaixonado por tecnologia, administro servidores Minecraft e crio soluções SaaS que impactam usuários reais.</p>
+      <a href="#contato" class="btn">Conectar</a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-grid">
+        <div>
+          <p>Oi! Sou o Rafael, um dev que acredita que código é arte. Quando não estou mergulhado em plugins Minecraft, estou experimentando ideias para startups.</p>
+          <p>Fundei a Contaliize e o Conecta Cuidadores, trazendo mais eficiência para microempreendedores e cuidadores de idosos.</p>
+          <p>Adoro aprender: Java e JavaScript foram meus primeiros amores, mas estou sempre explorando novas linguagens e frameworks.</p>
+          <p>Formado pela Alura Tech School, planejo cursar Bacharelado em 2026 para expandir horizontes e network.</p>
         </div>
-    </section>
-    
-    <!-- Sobre Mim -->
-    <section id="sobre" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mim</h2>
-            <div class="about-grid">
-                <div class="about-content animate-in">
-                    <p>Olá! Sou Rafael, um desenvolvedor de 20 anos com 2 anos de experiência. Comecei minha jornada com Java por causa da minha paixão por Minecraft, onde administro 2 servidores e desenvolvo plugins personalizados.</p>
-                    <p>Nasci e cresci em Belo Horizonte, uma cidade que sempre amei. Além do desenvolvimento, sou empreendedor e fundei duas startups/SaaS: Contaliize e Conecta Cuidadores.</p>
-                    <p>Atualmente me considero um desenvolvedor júnior e minha formação técnica foi pela escola tech da Alura. Pretendo iniciar minha faculdade em 2026 para expandir meu conhecimento e network na bolha tech.</p>
-                </div>
-                <div class="timeline animate-in">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-date">2024 - Presente</div>
-                            <h3 class="timeline-title">Fundador - Contaliize & Conecta Cuidadores</h3>
-                            <p class="timeline-desc">Criação e gestão de duas startups inovadoras</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-date">2024 - Presente</div>
-                            <h3 class="timeline-title">Administrador de Servidores Minecraft</h3>
-                            <p class="timeline-desc">Gestão de 2 servidores e desenvolvimento de plugins personalizados</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-date">2023</div>
-                            <h3 class="timeline-title">Início da Carreira em Desenvolvimento</h3>
-                            <p class="timeline-desc">Primeiros passos com Java e JavaScript</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <ul class="timeline">
+            <li class="timeline-item"><div class="timeline-date">2024 – Hoje</div><div class="timeline-desc">Fundador da Contaliize & Conecta Cuidadores</div></li>
+            <li class="timeline-item"><div class="timeline-date">2024 – Hoje</div><div class="timeline-desc">Administração de servidores Minecraft</div></li>
+            <li class="timeline-item"><div class="timeline-date">2023</div><div class="timeline-desc">Início na programação (Java & JS)</div></li>
+          </ul>
         </div>
-    </section>
-    
-    <!-- Habilidades -->
-    <section id="habilidades" class="skills">
-        <div class="container">
-            <h2 class="section-title">Minhas Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-card animate-in">
-                    <div class="skill-icon">{ }</div>
-                    <h3 class="skill-title">Java</h3>
-                    <p class="skill-desc">Desenvolvimento de aplicações e plugins para Minecraft. Experiência de 2 anos trabalhando com a linguagem.</p>
-                </div>
-                <div class="skill-card animate-in">
-                    <div class="skill-icon">JS</div>
-                    <h3 class="skill-title">JavaScript</h3>
-                    <p class="skill-desc">Desenvolvimento web e criação de interfaces interativas para minhas plataformas SaaS.</p>
-                </div>
-                <div class="skill-card animate-in">
-                    <div class="skill-icon">Py</div>
-                    <h3 class="skill-title">Python</h3>
-                    <p class="skill-desc">Estudando nas horas vagas para expandir meu conhecimento em automação e análise de dados.</p>
-                </div>
-                <div class="skill-card animate-in">
-                    <div class="skill-icon">⚙️</div>
-                    <h3 class="skill-title">Administração de Servidores</h3>
-                    <p class="skill-desc">Gestão e manutenção de servidores Minecraft, incluindo otimização e resolução de problemas.</p>
-                </div>
-                <div class="skill-card animate-in">
-                    <div class="skill-icon">🚀</div>
-                    <h3 class="skill-title">Empreendedorismo</h3>
-                    <p class="skill-desc">Fundador de duas startups, com experiência em desenvolvimento de negócios e gerenciamento de projetos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projetos -->
-    <section id="projetos" class="projects">
-        <div class="container">
-            <h2 class="section-title">Meus Projetos</h2>
-            <div class="project-grid">
-                <div class="project-card animate-in">
-                    <div class="project-img">Contaliize</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Contaliize</h3>
-                        <p class="project-desc">Plataforma direcionada para MEIs e pequenas empresas, facilitando o controle de produtos, faturamento e impostos.</p>
-                        <a href="#" class="btn">Ver projeto</a>
-                    </div>
-                </div>
-                <div class="project-card animate-in">
-                    <div class="project-img">Conecta Cuidadores</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Conecta Cuidadores</h3>
-                        <p class="project-desc">Plataforma que conecta pessoas a cuidadores qualificados de idosos ou crianças, com certificados e segurança.</p>
-                        <a href="#" class="btn">Ver projeto</a>
-                    </div>
-                </div>
-                <div class="project-card animate-in">
-                    <div class="project-img">Plugins Minecraft</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Plugins Minecraft</h3>
-                        <p class="project-desc">Desenvolvimento de plugins personalizados para servidores de Minecraft, utilizando Java.</p>
-                        <a href="#" class="btn">Ver projeto</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contato -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-grid">
-                <div class="contact-info animate-in">
-                    <p>Estou sempre em busca de novos desafios e oportunidades de aprendizado. Se você está interessado em meu trabalho ou gostaria de discutir possíveis colaborações, não hesite em entrar em contato.</p>
-                    <p>Atualmente residindo em Belo Horizonte, estou disponível para trabalhos remotos e colaborações em projetos inovadores.</p>
-                    <div class="contact-links">
-                        <a href="#" class="contact-link">in</a>
-                        <a href="#" class="contact-link">gh</a>
-                        <a href="#" class="contact-link">@</a>
-                    </div>
-                </div>
-                <div class="about-content animate-in">
-                    <p>Formação e planos futuros:</p>
-                    <p>Minha formação técnica foi feita através da escola tech da Alura, onde adquiri conhecimentos práticos em desenvolvimento de software. Pretendo iniciar minha faculdade em 2026 para expandir meu conhecimento teórico e ampliar meu network na área de tecnologia.</p>
-                    <p>Acredito que a combinação de conhecimento prático e aprendizado contínuo é essencial para se destacar no mundo da tecnologia, e estou sempre buscando novas oportunidades para crescer como profissional.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Rafael | Desenvolvedor & Empreendedor</p>
-        </div>
-    </footer>
-    
-    <script>
-        // Animação de entrada ao scroll
-        const animateElements = document.querySelectorAll('.animate-in');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        animateElements.forEach(element => {
-            observer.observe(element);
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-title">Java</div><div class="skill-desc">Backend & plugins Minecraft</div></div>
+        <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-title">JavaScript</div><div class="skill-desc">Web & Node.js</div></div>
+        <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-title">Python</div><div class="skill-desc">Automação & scripts</div></div>
+      </div>
+      <h2 class="section-title">Frameworks Utilizados</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-title">React</div></div>
+        <div class="skill-card"><div class="skill-icon">⏭️</div><div class="skill-title">Next.js</div></div>
+        <div class="skill-card"><div class="skill-icon">⬢</div><div class="skill-title">Node.js</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="container">
+      <h2 class="section-title">Projetos</h2>
+      <div class="project-buttons">
+        <a href="https://armamc.net/" class="btn">☄️ Armageddon Server</a>
+        <a href="https://loja.reispixelmon.com.br/" class="btn">🐹 Reis Pixelmon Server</a>
+        <a href="https://contaliize.vercel.app/" class="btn">🧾 Contaliize</a>
+        <a href="https://conectacuidador.vercel.app/" class="btn">👴 Conecta Cuidador</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container">
+      <div class="contact-grid">
+        <a href="https://github.com/R4FISX" class="contact-link" target="_blank">🐙</a>
+        <a href="https://www.linkedin.com/in/rafael-rodrigues-rosendo-9b1756321/" class="contact-link" target="_blank">🔗</a>
+        <a href="mailto:rafaelrodrgues002@gmail.com" class="contact-link">✉️</a>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
