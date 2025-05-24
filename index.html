@@ -5,7 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rafael | Dev</title>
   <!-- Fonte monoespaçada para vibe de terminal -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-p1CmX8l6r1XjO0+G1jXWk8EZkOgMeXvkZeN5ih+jWz0zXJ7xzI0pF0wIlYpQ5wpk4lXB6Xw8r6Q94Mrzj/ONSg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- GitHub Calendar CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/github-calendar/dist/github-calendar.css"
+  />
+
   <style>
     :root {
       --bg: #0d0f14;
@@ -14,7 +33,11 @@
       --secondary: #1b1e23;
       --hover: #2e333e;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       background: var(--bg);
       color: var(--fg);
@@ -22,55 +45,222 @@
       line-height: 1.6;
       cursor: crosshair;
     }
-    a { color: var(--fg); text-decoration: none; }
+    a {
+      color: var(--fg);
+      text-decoration: none;
+    }
     header {
-      position: fixed; top: 0; width: 100%; z-index: 100;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
       backdrop-filter: blur(6px);
-      background: rgba(13,15,20,0.75);
+      background: rgba(13, 15, 20, 0.75);
       border-bottom: 1px solid var(--secondary);
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
-    .logo { color: var(--accent); font-weight: 600; font-size: 1.4rem; }
-    .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { position: relative; padding: 0.3rem 0; }
-    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
-    .nav-links a:hover::after { width: 100%; }
-    section { padding: 6rem 0; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 0.3rem 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    section {
+      padding: 6rem 0;
+    }
     .hero {
-      height: 100vh; display: flex; align-items: center;
-      background: linear-gradient(135deg, rgba(57,255,20,0.1), transparent 70%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), transparent 70%);
       overflow: hidden;
     }
-    .hero-content { max-width: 700px; }
-    .hero-sub { color: var(--accent); letter-spacing: 3px; }
-    .hero-title { font-size: 3rem; margin: 0.5rem 0; position: relative; }
-    .hero-title::after { content: '|'; color: var(--accent); animation: blink 0.8s steps(1) infinite; margin-left:5px; }
-    @keyframes blink { 0%,100%{opacity:0;}50%{opacity:1;} }
-    .hero-desc { opacity:.85; max-width:600px; margin-bottom:2rem; }
-    .btn { background: var(--accent); color: var(--bg); padding:0.8rem 1.5rem; border:none; font-weight:600; border-radius:4px; margin:0.5rem 0; transition:background .3s, transform .3s; cursor:pointer; display:inline-block; }
-    .btn:hover { background: var(--hover); transform: translateY(-2px); }
-    .section-title { font-size:1.8rem; position:relative; display:inline-block; margin-bottom:2rem; }
-    .section-title::after { content:''; position:absolute; bottom:-6px; left:0; width:50px; height:3px; background:var(--accent); }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
-    .about-grid p { margin-bottom:1rem; opacity:.85; }
-    .skills-grid { display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:2rem; }
-    .skill-card {
-      background:var(--secondary); padding:1rem 1.5rem; border-radius:6px; border:1px solid var(--bg);
-      transition:transform .3s;
+    .hero-content {
+      max-width: 700px;
     }
-    .skill-card:hover { transform: translateY(-3px); border-color:var(--accent); }
-    .skill-icon { font-size:2rem; color:var(--accent); margin-bottom:.5rem; }
-    .skill-title { font-size:1.1rem; margin-bottom:.3rem; }
-    .skill-desc { font-size:.9rem; opacity:.8; }
-    .project-buttons { display:flex; flex-wrap:wrap; gap:1rem; }
-    .contact-grid { display:flex; justify-content:center; gap:2rem; }
-    .contact-link { display:flex; align-items:center; justify-content:center; width:50px; height:50px; border:2px solid var(--accent); border-radius:50%; transition:border-color .3s, color .3s; font-size:1.4rem; }
-    .contact-link:hover { border-color:var(--hover); color:var(--hover); }
-    @media(max-width:768px) {
-      nav { flex-direction:column; gap:.5rem; padding:.5rem 0; }
-      .about-grid { grid-template-columns:1fr; }
-      .skills-grid, .project-buttons, .contact-grid { justify-content:center; }
+    .hero-sub {
+      color: var(--accent);
+      letter-spacing: 3px;
+    }
+    .hero-title {
+      font-size: 3rem;
+      margin: 0.5rem 0;
+      position: relative;
+    }
+    .hero-title::after {
+      content: '|';
+      color: var(--accent);
+      animation: blink 0.8s steps(1) infinite;
+      margin-left: 5px;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    .hero-desc {
+      opacity: .85;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      font-weight: 600;
+      border-radius: 4px;
+      margin: 0.5rem 0;
+      transition: background .3s, transform .3s;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: var(--hover);
+      transform: translateY(-2px);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .about-grid p {
+      margin-bottom: 1rem;
+      opacity: .85;
+    }
+    .skills-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .skill-card {
+      background: var(--secondary);
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--bg);
+      transition: transform .3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+    .skill-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+    .skill-title {
+      font-size: 1.1rem;
+      margin-bottom: .3rem;
+    }
+    .skill-desc {
+      font-size: .9rem;
+      opacity: .8;
+    }
+    .project-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      transition: border-color .3s, color .3s;
+      font-size: 1.4rem;
+    }
+    .contact-link:hover {
+      border-color: var(--hover);
+      color: var(--hover);
+    }
+
+    /* Contribuições */
+    #contribuicoes {
+      padding: 6rem 0;
+    }
+    #contribuicoes > .container {
+      position: relative;
+    }
+    #contribuicoes img,
+    #github-calendar {
+      border: 1px solid var(--secondary);
+      border-radius: 6px;
+      padding: 1rem;
+      background: var(--secondary);
+    }
+    /* esconde o link original em inglês */
+    #github-calendar .calendar-legend a {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: .5rem;
+        padding: .5rem 0;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid,
+      .project-buttons,
+      .contact-grid {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -83,6 +273,7 @@
           <a href="#sobre">Sobre</a>
           <a href="#habilidades">Skills</a>
           <a href="#projetos">Projetos</a>
+          <a href="#contribuicoes">Contribuições</a>
           <a href="#contato">Contato</a>
         </div>
       </nav>
@@ -93,7 +284,10 @@
     <div class="container hero-content">
       <div class="hero-sub">DEV & EMPREENDEDOR</div>
       <h1 class="hero-title">Rafael, 20 anos</h1>
-      <p class="hero-desc">Apaixonado por tecnologia, administro servidores Minecraft e crio soluções SaaS que impactam usuários reais.</p>
+      <p class="hero-desc">
+        Apaixonado por tecnologia, administro servidores Minecraft e crio soluções
+        SaaS que impactam usuários reais.
+      </p>
       <a href="#contato" class="btn">Conectar</a>
     </div>
   </section>
@@ -110,9 +304,18 @@
         </div>
         <div>
           <ul class="timeline">
-            <li class="timeline-item"><div class="timeline-date">2024 – Hoje</div><div class="timeline-desc">Fundador da Contaliize & Conecta Cuidadores</div></li>
-            <li class="timeline-item"><div class="timeline-date">2024 – Hoje</div><div class="timeline-desc">Administração de servidores Minecraft</div></li>
-            <li class="timeline-item"><div class="timeline-date">2023</div><div class="timeline-desc">Início na programação (Java & JS)</div></li>
+            <li class="timeline-item">
+              <div class="timeline-date">2024 – Hoje</div>
+              <div class="timeline-desc">Fundador da Contaliize & Conecta Cuidadores</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-date">2024 – Hoje</div>
+              <div class="timeline-desc">Administração de servidores Minecraft</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-date">2023</div>
+              <div class="timeline-desc">Início na programação (Java & JS)</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -123,15 +326,36 @@
     <div class="container">
       <h2 class="section-title">Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-title">Java</div><div class="skill-desc">Backend & plugins Minecraft</div></div>
-        <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-title">JavaScript</div><div class="skill-desc">Web & Node.js</div></div>
-        <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-title">Python</div><div class="skill-desc">Automação & scripts</div></div>
+        <div class="skill-card">
+          <i class="fa-brands fa-java skill-icon"></i>
+          <div class="skill-title">Java</div>
+          <div class="skill-desc">Backend & plugins Minecraft</div>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-js skill-icon"></i>
+          <div class="skill-title">JavaScript</div>
+          <div class="skill-desc">Web & Node.js</div>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-python skill-icon"></i>
+          <div class="skill-title">Python</div>
+          <div class="skill-desc">Automação & scripts</div>
+        </div>
       </div>
       <h2 class="section-title">Frameworks Utilizados</h2>
       <div class="skills-grid">
-        <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-title">React</div></div>
-        <div class="skill-card"><div class="skill-icon">⏭️</div><div class="skill-title">Next.js</div></div>
-        <div class="skill-card"><div class="skill-icon">⬢</div><div class="skill-title">Node.js</div></div>
+        <div class="skill-card">
+          <i class="fa-brands fa-react skill-icon"></i>
+          <div class="skill-title">React</div>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-js skill-icon"></i>
+          <div class="skill-title">Next.js</div>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-node-js skill-icon"></i>
+          <div class="skill-title">Node.js</div>
+        </div>
       </div>
     </div>
   </section>
@@ -148,15 +372,52 @@
     </div>
   </section>
 
+  <!-- Seção de Contribuições GitHub -->
+  <section id="contribuicoes">
+    <div class="container">
+      <h2 class="section-title">Contribuições no GitHub</h2>
+      <div id="github-calendar"></div>
+      <!-- Link próprio traduzido -->
+      <p style="margin-top: .5rem; text-align: right;">
+        <a
+          href="https://docs.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/"
+          target="_blank"
+          style="color: var(--accent); text-decoration: none;"
+        >
+          Como contamos as contribuições
+        </a>
+      </p>
+    </div>
+  </section>
+
   <section id="contato">
     <div class="container">
       <div class="contact-grid">
-        <a href="https://github.com/R4FISX" class="contact-link" target="_blank">🐙</a>
-        <a href="https://www.linkedin.com/in/rafael-rodrigues-rosendo-9b1756321/" class="contact-link" target="_blank">🔗</a>
-        <a href="mailto:rafaelrodrgues002@gmail.com" class="contact-link">✉️</a>
+        <a href="https://github.com/R4FISX" class="contact-link" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/rafael-rodrigues-rosendo-9b1756321/"
+          class="contact-link"
+          target="_blank"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="mailto:rafaelrodrgues002@gmail.com" class="contact-link">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- GitHub Calendar JS -->
+  <script src="https://unpkg.com/github-calendar/dist/github-calendar.min.js"></script>
+  <script>
+    GitHubCalendar("#github-calendar", "R4FISX", {
+      responsive: true,
+      tooltips: true,
+      summary_text: "Contribuições deste ano"
+    });
+  </script>
 </body>
 </html>
